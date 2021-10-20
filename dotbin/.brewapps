@@ -1,0 +1,139 @@
+#!/usr/bin/env bash
+
+# .brew
+# In this script we will install many apps via Homebrew
+
+# Clear the screen
+clear && printf '\e[3J'
+
+echo "
+\033[1;93m
+Now we'll install a shitload of apps with\033[0m \033[1;34mHomebrew.
+\033[0m
+"
+sleep 2
+
+echo "
+\033[1;93m
+Go make that\033[0m \033[5;101mcoffee\033[0m \033[1;93myou've been thinking about.
+\033[0m
+
+"
+sleep 3
+
+# Install GNU core utilities (those that come with macOS are outdated)
+brew install coreutils
+
+# Install some other useful utilities like `sponge`
+brew install moreutils
+
+# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
+brew install findutils
+
+# Install GNU `sed`, overwriting the built-in `sed`
+brew install gnu-sed
+
+# Install GnuPG to enable PGP-signing commits
+brew install gnupg
+
+# Install more recent versions of some macOS tools
+brew install grep
+brew install openssh
+brew install screen
+brew install php
+brew install gmp
+
+# Tap the font cask
+brew tap homebrew/cask-fonts
+
+# Install font tools
+brew tap bramstein/webfonttools
+brew install sfnt2woff
+brew install sfnt2woff-zopfli
+brew install woff2
+brew install font-hack
+
+echo "
+\033[1;34m
+Installing git utilities...
+\033[0m
+"
+brew install git-extras
+brew install legit
+brew install git-flow
+brew install github
+
+# git config
+git config --global user.name "Coffe3"
+git config --global user.email 7morris@gmail.com
+
+echo "
+\033[1;34m
+Installing browsers...
+\033[0m
+"
+brew install brave-browser
+brew install firefox
+brew install google-chrome
+
+echo "
+\033[1;34m
+Installing various utilities...
+\033[0m
+"
+brew install mackup
+brew install apparency
+brew install appdelete
+brew install bigsur-cache-cleaner
+brew install coconutbattery
+brew install cocktail
+brew install etrecheckpro
+brew install happymac
+brew install keyboard-cleaner
+brew install macdependency
+brew install maintenance
+brew install speedtest
+brew install superduper
+brew install suspicious-package
+brew install the-unarchiver
+
+echo "
+\033[1;34m
+Installing a few useful binaries...
+\033[0m
+"
+brew install ack
+brew install curl
+brew install gnu-indent
+brew install gnu-tar
+brew install gnu-which
+brew install gnu-grep
+brew install wget
+
+echo "
+\033[1;34m
+Installing miscellany...
+\033[0m
+"
+brew install adapter
+brew install atom
+brew install balenaetcher
+brew install discord
+brew install final-cut-library-manager
+brew install folx
+brew install iterm2
+brew install macdown
+brew install macvim
+brew install neofetch
+brew install raspberry-pi-imager
+brew install telegram-desktop
+brew install veracrypt
+brew install vlc
+brew install whatsapp
+brew install zoom
+
+# Add Homebrew's "sbin" to PATH
+# echo 'export PATH="/usr/local/sbin:$PATH"' >> ~/.bash_profile
+
+# Add coreutils to `$PATH`
+export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"

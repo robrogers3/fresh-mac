@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# .homebrew
+
+# Check for Homebrew and install if we don't have it
+if which brew 2> /dev/null; then
+    brewLocation=`which brew`
+    appLocation=`brew --prefix`
+    echo "Homebrew is installed in $brewLocation"
+    echo "Homebrew apps are run from $appLocation"
+else
+  echo "
+  \033[1;93m
+Installing Homebrew...
+  \033[0m
+  "
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
