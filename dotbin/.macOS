@@ -250,8 +250,6 @@ defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE d MMM hh:mm
 defaults write com.apple.screencapture "include-date" -bool "false"
 
 
-
-
 ###############################################################################
 # Mac App Store                                                               #
 ###############################################################################
