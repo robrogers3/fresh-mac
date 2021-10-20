@@ -1,6 +1,5 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh -f
 
-# .homebrew
 
 # Check for Homebrew and install if we don't have it
 if which brew 2> /dev/null; then

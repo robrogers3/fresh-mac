@@ -1,7 +1,5 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh -f
 
-# .brew
-# In this script we will install many apps via Homebrew
 
 # Clear the screen
 clear && printf '\e[3J'

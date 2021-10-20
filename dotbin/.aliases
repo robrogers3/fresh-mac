@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh -f
+
 
 # Set my preferred working volume
 alias vol="osascript -e 'set volume output volume 75'"
