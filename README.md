@@ -1,6 +1,7 @@
 # fresh-macOS
 
-Run `install` and follow the prompts.
+After buying a new mac or installing macOS fresh,
+run `install` and follow the prompts for your password.
 
 Very much a living, breathing work in progress.
 

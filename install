@@ -8,19 +8,19 @@
 
 # Start with the '.macOS' script to change some system behaviors
 MACOS="dotbinbin/.macOS"
-. "$MACOS"
+zsh "$MACOS"
 
 # Then the '.homebrew' script to install Homebrew
 HOMEBREW="dotbin/.homebrew"
-. "$HOMEBREW"
+zsh "$HOMEBREW"
 
 # Next the '.brewapps' script to install a bunch of apps
 BREWAPPS="dotbinbin/.brewapps"
-. "$BREWAPPS"
+zsh "$BREWAPPS"
 
 # Now the '.oh-my-zsh' script to install oh-my-zsh
 OMZ="dotbinbin/.oh-my-zsh"
-. "$OMZ"
+zsh "$OMZ"
 
 ###############################################################################
 #   Now finish up with a couple of simple tasks and a friendly reminder       #
