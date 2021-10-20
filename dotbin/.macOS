@@ -240,6 +240,18 @@ sudo spctl --master-disable
 sudo defaults write /var/db/SystemPolicy-prefs.plist enabled -string no
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
+# Flash clock time separators
+defaults write com.apple.menuextra.clock "FlashDateSeparators" -bool "true"
+
+#Set to &quot;EEE d MMM hh:mm:ss&quot;
+defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE d MMM hh:mm:ss\""
+
+# Do not include date in screenshot filenames
+defaults write com.apple.screencapture "include-date" -bool "false"
+
+
+
+
 ###############################################################################
 # Mac App Store                                                               #
 ###############################################################################
