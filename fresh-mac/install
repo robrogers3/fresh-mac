@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+# Much credit to github.com/mathiasbynens/dotfiles
+
+###############################################################################
+#         Run a bunch of other scripts, then return to this one               #
+###############################################################################
+
+# Start with the '.macOS' script to change some system behaviors
+MACOS="dotbinbin/.macOS"
+. "$MACOS"
+
+# Then the '.homebrew' script to install Homebrew
+HOMEBREW="dotbin/.homebrew"
+. "$HOMEBREW"
+
+# Next the '.brewapps' script to install a bunch of apps
+BREWAPPS="dotbinbin/.brewapps"
+. "$BREWAPPS"
+
+# Now the '.oh-my-zsh' script to install oh-my-zsh
+OMZ="dotbinbin/.oh-my-zsh"
+. "$OMZ"
+
+###############################################################################
+#   Now finish up with a couple of simple tasks and a friendly reminder       #
+###############################################################################
+
+# Clear the screen
+clear && printf '\e[3J'
+
+# Announce that we're finished but there are more tasks, using colors
+echo "
+\033[1;93m
+FINISHED! (Almost)
+\033[0m
+"
+sleep 2
+echo "\033[;92m
+Remember, you have a \033[1;93mTODO\033[0m \033[;92mlist now:\033[0m
+"
+sleep 2
+echo "  • \033[;92mRestore\033[0m \033[1;93mPreferences\033[0m \033[;92mfrom your backup\033[0m"
+sleep 1
+echo "  • \033[;92mInstall \033[1;93mDropbox\033[0m \033[;92mand then run\033[0m 'mackup restore'"
+sleep 1
+echo "  • \033[1;91mLogout\033[0m \033[;92mor\033[0m \033[1;91mrestart
+\033[0m
+"
+
+read -p "Press enter to continue"
