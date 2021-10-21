@@ -2,25 +2,57 @@
 
 # Much credit to github.com/mathiasbynens/dotfiles
 
+
 ###############################################################################
-#         Run a bunch of other scripts, then return to this one               #
+
+FRESHMAC=$HOME/fresh-mac
+
+MACOS=$FRESHMAC/dotbin/.macOS
+HOMEBREW=$FRESHMAC/dotbin/.homebrew
+BREWAPPS=$FRESHMAC/dotbin/.brewapps
+OMZ=$FRESHMAC/dotbin/.omz
+CLEANBREW=$FRESHMAC/dotbin/.cleanbrew
+INSTALL=$FRESHMAC/install
+
 ###############################################################################
 
-# Start with the '.macOS' script to change some system behaviors
-MACOS="dotbin/.macOS"
-zsh "$MACOS"
+while :
+do
+    clear
+    cat<<EOF
 
-# Then the '.homebrew' script to install Homebrew
-HOMEBREW="dotbin/.homebrew"
-zsh "$HOMEBREW"
-
-# Next the '.brewapps' script to install a bunch of apps
-BREWAPPS="dotbin/.brewapps"
-zsh "$BREWAPPS"
-
-# Now the '.oh-my-zsh' script to install oh-my-zsh
-OMZ="dotbin/.oh-my-zsh"
-zsh "$OMZ"
+    ########################################################################
+    #                                                                      #
+    #                            fresh-mac                                 #
+    #                                                                      #
+    ########################################################################
+    #                                                                      #
+    #     Execute each task in order after a fresh macOS install           #
+    #                                                                      #
+    #     Enter your choice:                                               #
+    #                                                                      #
+    #        (1) Customize Mac preferences                                 #
+    #        (2) Install Homebrew                                          #
+    #        (3) Install apps with Homebrew                                #
+    #        (4) Install Oh-My-Zsh                                         #
+    #        (5) Clean up Homebrew                                         #
+    #                                                                      #
+    #        (0) Exit                                                      #
+    #                                                                      #
+    ########################################################################
+EOF
+    read -n1 -s
+    case "$REPLY" in
+    "1")  echo "Tweaking Mac config..."              | . $MACOS           ;;
+    "2")  echo "Installing Homebrew..."              | . $HOMEBREW        ;;
+    "3")  echo "Installing a bunch of apps..."       | . $BREWAPPS        ;;
+    "4")  echo "Installing Oh My Zsh..."             | . $OMZ             ;;
+    "5")  echo "Updating & cleaning up Homebrew..."  | . $CLEANBREW       ;;
+    "0")  exit                                                            ;;
+     * )  echo "Invalid option!"                                          ;;
+    esac
+    sleep 1
+done
 
 ###############################################################################
 #   Now finish up with a couple of simple tasks and a friendly reminder       #
