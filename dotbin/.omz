@@ -22,7 +22,7 @@ if ! grep -Fxq "neofetch" $HOME/.zshrc; then
 fi
 
 # Add .aliases to .zshrc
-if ! grep -Fxq "source $HOME/.aliases" $HOME/.zshrc; then
+if ! grep -Fxq "source ~/.aliases" $HOME/.zshrc; then
   echo "source ~/.aliases" >> $HOME/.zshrc
 fi
 
