@@ -12,6 +12,7 @@ HOMEBREW=$FRESHMAC/dotbin/.homebrew
 BREWAPPS=$FRESHMAC/dotbin/.brewapps
 OMZ=$FRESHMAC/dotbin/.omz
 CLEANBREW=$FRESHMAC/dotbin/.cleanbrew
+TODO=$FRESHMAC/dotbin/.todo
 INSTALL=$FRESHMAC/install
 
 ###############################################################################
@@ -36,6 +37,7 @@ do
     #        (3) Install apps with Homebrew                                #
     #        (4) Install Oh-My-Zsh                                         #
     #        (5) Clean up Homebrew                                         #
+    #        (6) Read to TODO list when finished                           #
     #                                                                      #
     #        (0) Exit                                                      #
     #                                                                      #
@@ -48,6 +50,7 @@ EOF
     "3")  echo "Installing a bunch of apps..."       | . $BREWAPPS        ;;
     "4")  echo "Installing Oh My Zsh..."             | . $OMZ             ;;
     "5")  echo "Updating & cleaning up Homebrew..."  | . $CLEANBREW       ;;
+    "6")  echo "Stuff TO DO!..."                     | . $TODO            ;;
     "0")  exit                                                            ;;
      * )  echo "Invalid option!"                                          ;;
     esac
