@@ -7,7 +7,7 @@
 ###############################################################################
 
 # Start with the '.macOS' script to change some system behaviors
-MACOS="dotbinbin/.macOS"
+MACOS="dotbin/.macOS"
 zsh "$MACOS"
 
 # Then the '.homebrew' script to install Homebrew
@@ -15,11 +15,11 @@ HOMEBREW="dotbin/.homebrew"
 zsh "$HOMEBREW"
 
 # Next the '.brewapps' script to install a bunch of apps
-BREWAPPS="dotbinbin/.brewapps"
+BREWAPPS="dotbin/.brewapps"
 zsh "$BREWAPPS"
 
 # Now the '.oh-my-zsh' script to install oh-my-zsh
-OMZ="dotbinbin/.oh-my-zsh"
+OMZ="dotbin/.oh-my-zsh"
 zsh "$OMZ"
 
 ###############################################################################
