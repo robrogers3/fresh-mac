@@ -8,7 +8,6 @@
 # Clear the screen
 clear && printf '\e[3J'
 
-sleep 2
 echo "\033[;92m
 Remember, you have a \033[1;93mTODO\033[0m \033[;92mlist now:\033[0m
 "
@@ -20,5 +19,6 @@ sleep 1
 echo "  • \033[1;91mLogout\033[0m \033[;92mor\033[0m \033[1;91mrestart
 \033[0m
 "
+sleep 3
 
 read -p "Press enter to continue"
