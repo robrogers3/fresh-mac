@@ -27,9 +27,8 @@ if ! grep -Fxq "source ~/.aliases" $HOME/.zshrc; then
 fi
 
 # Copy to Home folder
-cp -f .aliases .hushlogin $HOME
+cp -f .aliases $HOME
 
 # Reload
 source $HOME/.aliases
-source $HOME/.hushlogin
 source $HOME/.zshrc
