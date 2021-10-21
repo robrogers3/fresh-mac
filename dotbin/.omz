@@ -16,6 +16,11 @@ if ! grep -Fxq "robbyrussell" $HOME/.zshrc; then
   sed -i "" "s|robbyrussell|bira|" $HOME/.zshrc
 fi
 
+# Uncomment
+if ! grep -Fxq "# ENABLE_CORRECTION="true"" $HOME/.zshrc; then
+  sed -i "" "s|# ENABLE_CORRECTION="true"|ENABLE_CORRECTION="true"|" $HOME/.zshrc
+fi
+
 # Add neofetch to .zshrc
 if ! grep -Fxq "neofetch" $HOME/.zshrc; then
   echo "neofetch" >> $HOME/.zshrc
