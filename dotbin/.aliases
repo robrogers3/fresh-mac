@@ -4,13 +4,13 @@
 # Set my preferred working volume
 alias vol="osascript -e 'set volume output volume 75'"
 alias work="osascript -e 'set volume output volume 75'"
-alias phones="osascript -e 'set volume output volume 35'"
+
+# Set my preferred headphones volume
+alias headphones="osascript -e 'set volume output volume 35'"
+alias hp="osascript -e 'set volume output volume 35'"
 
 # Set my preferred sleeping volume
 alias sleep="osascript -e 'set volume output volume 20'"
-
-alias cleaninstall="sh ./.fresh-macOS/install"
-alias freshinstall="sh ./.fresh-macOS/install"
 
 # Navigation shortcuts
 alias dl="cd ~/Downloads"

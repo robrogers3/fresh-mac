@@ -11,25 +11,24 @@ sleep 2
 # Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
-# Change oh-my-zsh theme to bira
+# Change oh-my-zsh default theme to bira
 if ! grep -Fxq "robbyrussell" $HOME/.zshrc; then
   sed -i "" "s|robbyrussell|bira|" $HOME/.zshrc
 fi
 
-# Add 'neofetch'to .zshrc
+# Add neofetch to .zshrc
 if ! grep -Fxq "neofetch" $HOME/.zshrc; then
   echo "neofetch" >> $HOME/.zshrc
 fi
 
-# Add .aliases to .zshrc
-if ! grep -Fxq "source $HOME/.aliases" $HOME/.zshrc; then
+# Add  line to reload .aliases file to .zshrc
+if ! grep -Fxq "source ~/.aliases" $HOME/.zshrc; then
   echo "source ~/.aliases" >> $HOME/.zshrc
 fi
 
 # Copy to Home folder
-cp -f .aliases .hushlogin $HOME
+cp -f .aliases $HOME
 
-# Load these files
+# Reload
 source $HOME/.aliases
-source $HOME/.hushlogin
 source $HOME/.zshrc
