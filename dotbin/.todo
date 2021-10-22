@@ -5,20 +5,44 @@
 #   Now finish up with a list of tasks                                        #
 ###############################################################################
 
+# Set colors
+black='\033[0;30m'
+white='\033[0;37m'
+red='\033[0;31m'
+green='\033[0;32m'
+yellow='\033[0;33m'
+blue='\033[0;34m'
+magenta='\033[0;35m'
+cyan='\033[0;36m'
+
+# Resets the style
+reset=`tput sgr0`
+
+# Color-echo. Improved. [Thanks @joaocunha]
+# arg $1 = message
+# arg $2 = Color
+cecho() {
+  echo "${2}${1}${reset}"
+  return
+}
+
 # Clear the screen
 clear && printf '\e[3J'
 
-echo "\033[;92m
-Remember, you have a \033[1;93mTODO\033[0m \033[;92mlist now:\033[0m
-"
+echo ""
+cecho " Remember, you have a TODO list now:" $green
 sleep 2
-echo "  • \033[;92mRestore\033[0m \033[1;93mPreferences\033[0m \033[;92mfrom your backup\033[0m"
-sleep 1
-echo "  • \033[;92mInstall \033[1;93mDropbox\033[0m \033[;92mand then run\033[0m 'mackup restore'"
-sleep 1
-echo "  • \033[1;91mLogout\033[0m \033[;92mor\033[0m \033[1;91mrestart
-\033[0m
-"
-sleep 3
+
+echo ""
+cecho "   ###################################################" $blue
+cecho "   #                                                 #" $blue
+cecho "   $blue#  $white • Restore Preferences from your backup       $blue #"
+cecho "   $blue#                                                $blue #"
+cecho "   $blue#  $white • Install Dropbox then run'mackup restore'   $blue #"
+cecho "   #                                                 #" $blue
+cecho "   $blue#  $white • Logout or restart                          $blue #"
+cecho "   #                                                 #" $blue
+cecho "   ###################################################" $blue
+echo ""
 
 read -p "Press enter to continue"

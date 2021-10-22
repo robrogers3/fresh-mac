@@ -1,5 +1,25 @@
 #!/usr/bin/env zsh -f
 
+# Set colors
+black='\033[0;30m'
+white='\033[0;37m'
+red='\033[0;31m'
+green='\033[0;32m'
+yellow='\033[0;33m'
+blue='\033[0;34m'
+magenta='\033[0;35m'
+cyan='\033[0;36m'
+
+# Resets the style
+reset=`tput sgr0`
+
+# Color-echo. Improved. [Thanks @joaocunha]
+# arg $1 = message
+# arg $2 = Color
+cecho() {
+  echo "${2}${1}${reset}"
+  return
+}
 
 # Close any open System Preferences panes, to prevent
 # them from overriding settings we’re about to change
@@ -8,17 +28,18 @@ osascript -e 'tell application "System Preferences" to quit'
 # Clear the screen
 clear && printf '\e[3J'
 
+echo ""
+cecho " Let's tweak some Mac settings... " $magenta
+echo ""
+
 # Ask for the administrator password upfront and run a keep-alive
 # to update existing `sudo` time stamp until script has finished
 sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-echo "
-\033[1;34m
-Let's tweak some Mac settings...
-\033[0m
-"
-sleep 2
+
+# Display -> Automatically adjust brightness
+sudo defaults write /Library/Preferences/com.apple.iokit.AmbientLightSensor "Automatic Display Enabled" -bool false
 
 ###############################################################################
 # Activity Monitor                                                            #
@@ -253,7 +274,6 @@ defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE d MMM hh:mm
 
 # Do not include date in screenshot filenames
 defaults write com.apple.screencapture "include-date" -bool "false"
-
 
 ###############################################################################
 # Mac App Store                                                               #
