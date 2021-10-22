@@ -5,11 +5,13 @@
 # them from overriding settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
 
-# Ask for the administrator password upfront
-sudo -v
+# Clear the screen
+clear && printf '\e[3J'
 
-# Keep-alive: update existing `sudo` time stamp until `.macOS` has finished
-while true; do sudo -v; sleep 300; kill -0 "$$" || exit; done 2>/dev/null &
+# Ask for the administrator password upfront and run a keep-alive
+# to update existing `sudo` time stamp until script has finished
+sudo -v
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 echo "
 \033[1;34m
