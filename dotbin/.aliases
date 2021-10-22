@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh -f
+#!/usr/bin/env
 
 
 # Set my preferred working volume
@@ -86,3 +86,9 @@ alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 
 # Always use color output for `ls`
 alias ls="command ls ${colorflag}"
+
+# Make a new dir and cd into it
+mkcd ()
+{
+  mkdir -p -- "$1" && cd -P -- "$1"
+}
