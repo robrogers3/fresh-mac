@@ -92,14 +92,14 @@ defaults write com.apple.dock launchanim -bool false
 # Don’t show recent applications in Dock
 defaults write com.apple.dock show-recents -bool false
 
-echo "
-\033[1;34m
-Nuking the default Dock icons...
-\033[0m
-"
-
-# Wipe all (default) app icons from the Dock
-defaults write com.apple.dock persistent-apps -array
+while true; do
+    read -p "The next step will `tput smul``tput bold`remove all Dock icons not currently open.`tput rmul``tput sgr0` Do you want to do that? " yn
+    case $yn in
+        [Yy]* ) defaults write com.apple.dock persistent-apps -array; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
 
 ###############################################################################
 # Dashboard                                      														 	#
@@ -125,12 +125,8 @@ defaults write com.apple.finder QuitMenuItem -bool true
 defaults write com.apple.finder DisableAllAnimations -bool true
 
 # Set Desktop as the default location for new Finder windows
-# For other paths, use `PfLo` and `file:///full/path/here/`
 defaults write com.apple.finder NewWindowTarget -string "PfDe"
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/"
-
-# Show all filename extensions
-# defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 # Show status bar & path bar
 defaults write com.apple.finder ShowStatusBar -bool true
@@ -198,20 +194,8 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 
-# Expand the following File Info panes:
-# General
-# Open with
-# Sharing & Permissions
-defaults write com.apple.finder FXInfoPanesExpanded -dict \
-	General -bool true \
-	OpenWith -bool true \
-	Privileges -bool true
-
 # Significantly improve the animation in save dialogs
 defaults write NSGlobalDomain NSWindowResizeTime .001
-
-# Use Plain Text Mode as Default for TextEdit
-defaults write com.apple.TextEdit RichText -int 0
 
 # Allow text selection in Quick Look
 defaults write com.apple.finder QLEnableTextSelection -bool TRUE
@@ -269,7 +253,7 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 # Flash clock time separators
 defaults write com.apple.menuextra.clock "FlashDateSeparators" -bool "true"
 
-#Set to &quot;EEE d MMM hh:mm&quot;
+#Set clock to Day / Month / Time (no seconds)
 defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE d MMM hh:mm\""
 
 # Do not include date in screenshot filenames
@@ -303,6 +287,9 @@ defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
 
 # Only use UTF-8 in Terminal.app
 defaults write com.apple.terminal StringEncodings -array 4
+
+# Use Plain Text Mode as Default for TextEdit
+defaults write com.apple.TextEdit RichText -int 0
 
 # Use a modified version of the Solarized Dark theme by default in Terminal.app
 osascript <<EOD
@@ -393,6 +380,6 @@ clear && printf '\e[3J'
 # Say we're finished
 echo "
 \033[1;93m
-Finished with the tweaks
+Finished with the tweaks!
 \033[0m"
 sleep 2
