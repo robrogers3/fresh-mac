@@ -43,9 +43,6 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 
-# Display -> Automatically adjust brightness
-sudo defaults write /Library/Preferences/com.apple.iokit.AmbientLightSensor "Automatic Display Enabled" -bool false
-
 # /////////////////////////////////////////////////////////////////////////////
 # Activity Monitor                                                            /
 # /////////////////////////////////////////////////////////////////////////////
@@ -174,6 +171,10 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 # General UI/UX                                                               /
 # /////////////////////////////////////////////////////////////////////////////
 
+# Require password 5 seconds after sleep or screen saver begins
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 5
+
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
 
@@ -263,6 +264,9 @@ defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE d MMM hh:mm
 
 # Do not include date in screenshot filenames
 defaults write com.apple.screencapture "include-date" -bool "false"
+
+# Display -> Automatically adjust brightness
+sudo defaults write /Library/Preferences/com.apple.iokit.AmbientLightSensor "Automatic Display Enabled" -bool false
 
 # /////////////////////////////////////////////////////////////////////////////
 # Mac App Store                                                               /
@@ -372,19 +376,23 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 # Kill affected applications                                                  /
 # /////////////////////////////////////////////////////////////////////////////
 
-for app in "Activity Monitor" \
-	"cfprefsd" \
-	"Dock" \
-	"Finder" \
-	"SystemUIServer"; do
-	killall "${app}" &> /dev/null
-done
-
-clear && printf '\e[3J'
-
-# Say we're finished
-echo "
-\033[1;93m
-Finished with the tweaks!
-\033[0m"
+echo ""
+cecho "Finished with OS-specific tweaks!" $white
 sleep 2
+echo ""
+echo ""
+cecho "###############################################################################" $white
+echo ""
+echo ""
+cecho "Some of these changes require a logout/restart to take effect." $white
+sleep 2
+echo ""
+cecho "Killing affected applications to enable changes." $white
+echo ""
+sleep 2
+
+for app in "Activity Monitor" "cfprefsd" \
+  "Dock" "Finder" "SystemUIServer" \
+  "Terminal"; do
+  killall "${app}" > /dev/null 2>&1
+done
