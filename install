@@ -2,17 +2,17 @@
 
 
 # Much credit to github.com/mathiasbynens/dotfiles
+# And to many others who also credit him
 
 # /////////////////////////////////////////////////////////////////////////////
 
 FRESHMAC=$HOME/fresh-mac
-
-MACOS=$FRESHMAC/dotbin/.macOS
-HOMEBREW=$FRESHMAC/dotbin/.homebrew
-BREWAPPS=$FRESHMAC/dotbin/.brewapps
-OMZ=$FRESHMAC/dotbin/.omz
-CLEANBREW=$FRESHMAC/dotbin/.cleanbrew
-TODO=$FRESHMAC/dotbin/.todo
+MACOS=$FRESHMAC/.dotbin/.macOS
+HOMEBREW=$FRESHMAC/.dotbin/.homebrew
+BREWAPPS=$FRESHMAC/.dotbin/.brewapps
+OMZ=$FRESHMAC/.dotbin/.omz
+CLEANBREW=$FRESHMAC/.dotbin/.cleanbrew
+TODO=$FRESHMAC/.dotbin/.todo
 INSTALL=$FRESHMAC/install
 
 # /////////////////////////////////////////////////////////////////////////////
