@@ -1,6 +1,8 @@
 #!/usr/bin/env zsh -f
 
 
+# /////////////////////////////////////////////////////////////////////////////
+
 echo "
 \033[1;34m
 Installing\033[0m \033[1;32moh-my-zsh...
@@ -14,7 +16,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 # Do these things:
 # 1) Change oh-my-zsh default theme to bira
 # 2) Add neofetch to .zshrc
-# 3) Add  line to reload .aliases file to .zshrc
+# 3) Add line to reload .aliases file to .zshrc
 
 #1 ////////////////////////////////////////////////
 if ! grep -Fxq "robbyrussell" $HOME/.zshrc; then
@@ -31,11 +33,12 @@ if ! grep -Fxq "source ~/.aliases" $HOME/.zshrc; then
   echo "source ~/.aliases" >> $HOME/.zshrc
 fi
 
-# Copy to Home folder
+# /////////////////////////////////////////////////////////////////////////////
+
+# Copy .aliases to Home folder
 cp -f .aliases $HOME
 
-# Reload
+# Reload these files
 source $HOME/.aliases
 source $HOME/.zshrc
-
 sleep 2
