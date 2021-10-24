@@ -1,9 +1,7 @@
-# fresh-macOS
+# fresh-mac
 
-Run `install` after buying a new mac or installing macOS fresh.
+Download the repo and run `install` after buying a new Mac or installing macOS fresh.
 
-Very much a living, breathing work in progress.
-
-I will flesh out the README later.
+Very much a living, breathing work in progress. I'm learning by doing. I will flesh out the README more later.
 
 FEEDBACK WELCOME/REQUESTED
