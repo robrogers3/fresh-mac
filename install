@@ -50,7 +50,7 @@ do
     #                                                                      #
     #     Enter your choice:                                               #
     #                                                                      #
-    #        (1) Customize Mac preferences                                 #
+    #        (1) Change Mac default preferences                            #
     #        (2) Install Homebrew                                          #
     #        (3) Install apps with Homebrew                                #
     #        (4) Install Oh-My-Zsh                                         #
@@ -63,13 +63,13 @@ do
 EOF
     read -n1 -s
     case "$REPLY" in
-    "1")  echo "Tweaking Mac config..."              | . $MACOS           ;;
-    "2")  echo "Installing Homebrew..."              | . $HOMEBREW        ;;
-    "3")  echo "Installing a bunch of apps..."       | . $BREWAPPS        ;;
-    "4")  echo "Installing Oh My Zsh..."             | . $OMZ             ;;
-    "5")  echo "Updating & cleaning up Homebrew..."  | . $CLEANBREW       ;;
-    "6")  echo "Stuff TO DO!..."                     | . $TODO            ;;
-    "0")  exit                                                            ;;
-     * )  echo "Invalid option!"                                          ;;
+    "1")  echo "Customizing your Mac!"                | . $MACOS           ;;
+    "2")  echo "Installing Homebrew!"                 | . $HOMEBREW        ;;
+    "3")  echo "Installing a bunch of apps!"          | . $BREWAPPS        ;;
+    "4")  echo "Installing Oh My Zsh!"                | . $OMZ             ;;
+    "5")  echo "Updating & cleaning up Homebrew!"     | . $CLEANBREW       ;;
+    "6")  echo "Stuff TO DO!"                         | . $TODO            ;;
+    "0")  exit                                                             ;;
+     * )  echo "Invalid option!"                                           ;;
     esac
 done
