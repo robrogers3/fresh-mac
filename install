@@ -22,6 +22,20 @@ CLEANBREW=$FRESHMAC/.dotbin/.cleanbrew
 OMZ=$FRESHMAC/.dotbin/.omz
 TODO=$FRESHMAC/.dotbin/.todo
 
+# Some functions
+updates_list() {
+  echo "
+  "
+  sudo softwareupdate --list
+  return
+}
+
+updater() {
+  echo "
+  "
+  sudo softwareupdate -ia
+  return
+}
 
 ###############################################################################
 # LOAD THE MENU                                                               #
@@ -46,16 +60,21 @@ do
     #                                                                      #
     ########################################################################
     #                                                                      #
-    #     Execute each task in order after a fresh macOS install           #
+    #       Execute each task in order after a fresh macOS install         #
+    #                                 OR                                   #
+    #               Execute any task whenever you need to!                 #
     #                                                                      #
-    #     Enter your choice:                                               #
+    #        Enter your choice:                                            #
     #                                                                      #
     #        (1) Change Mac default preferences                            #
     #        (2) Install Homebrew                                          #
     #        (3) Install apps with Homebrew                                #
     #        (4) Clean up Homebrew                                         #
     #        (5) Install Oh-My-Zsh                                         #
-    #        (6) Read the post-run TODO list                               #
+    #        (6) Show available software updates                           #
+    #        (7) Download available software updates                       #
+    #                                                                      #
+    #        (8) Read the post-run TODO list                               #
     #                                                                      #
     #        (0) Exit                                                      #
     #                                                                      #
@@ -68,7 +87,9 @@ EOF
     "3")  echo "Installing a bunch of apps!"          | . $BREWAPPS        ;;
     "4")  echo "Updating & cleaning up Homebrew!"     | . $CLEANBREW       ;;
     "5")  echo "Installing Oh My Zsh!"                | . $OMZ             ;;
-    "6")  echo "Stuff TO DO!"                         | . $TODO            ;;
+    "6")  echo "Checking for updates!"                | updates_list       ;;
+    "7")  echo "Downloading updates!"                 | updater            ;;
+    "8")  echo "Stuff TO DO!"                         | . $TODO            ;;
     "0")  exit                                                             ;;
      * )  echo "Invalid option!"                                           ;;
     esac
