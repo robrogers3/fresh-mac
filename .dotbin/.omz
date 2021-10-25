@@ -40,7 +40,10 @@ ALIASES=$FRESHMAC/.dotbin/.aliases
 
 OMZ=$HOME/.oh-my-zsh/oh-my-zsh.sh
 if test -f "$OMZ"; then
-echo "Oh-My-Zsh is already installed."
+cecho "
+    Oh-My-Zsh is already installed." $blue
+sleep 2
+exit
 else
   cecho "
   Installing oh-my-zsh...

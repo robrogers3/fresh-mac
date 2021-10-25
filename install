@@ -70,5 +70,4 @@ EOF
     "0")  exit                                                            ;;
      * )  echo "Invalid option!"                                          ;;
     esac
-    sleep 1
 done

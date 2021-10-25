@@ -34,10 +34,18 @@ cecho() {
 clear && printf '\e[3J'
 
 echo ""
-cecho "   Remember, you have a TODO list now:" $white
-sleep 3
+cecho "
 
-echo ""
+   Remember..." $white
+sleep 2
+cecho "
+
+   You have a TODO list." $white
+sleep 2
+
+echo "
+
+"
 cecho "   ###################################################" $blue
 cecho "   #                                                 #" $blue
 cecho "   $blue#  $white • Restore Preferences from your backup       $blue #"

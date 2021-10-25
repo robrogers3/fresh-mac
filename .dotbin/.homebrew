@@ -25,18 +25,24 @@ cecho() {
   return
 }
 
+###############################################################################
+# ASSIGN A VARIABLE                                                           #
+###############################################################################
 
-# Check for Homebrew and install if we don't have it
-if which brew 2> /dev/null; then
-    brewLocation=`which brew`
-    appLocation=`brew --prefix`
-    cecho "
-    Homebrew is installed in $brewLocation" $white
-    cecho "
-    Homebrew apps are run from $appLocation
-    " $white
+HOMEBREW=/usr/local/bin/brew
+
+###############################################################################
+# INSTALL HOMEBREW IF IT ISN'T ALREADY INSTALLED                              #
+###############################################################################
+
+if test -f "$HOMEBREW"; then
+cecho "
+    Homebrew is already installed!" $blue
+sleep 2
 else
   cecho "
-Installing Homebrew..." $yellow
+Installing Homebrew...
+" $yellow
+  sleep 2
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
