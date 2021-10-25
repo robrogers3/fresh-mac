@@ -8,5 +8,5 @@ Very much a living, breathing work in progress. I'm learning by doing. I will fl
 
 FEEDBACK WELCOME/REQUESTED
 
-TODO
+TODO:
 Figure out how to make it create the directory in your Home folder, clone there, and then cd into it.
