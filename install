@@ -8,6 +8,10 @@
 # ASSIGN FILES TO VARIABLES                                                   #
 ###############################################################################
 
+# This script
+INSTALL=$FRESHMAC/install
+
+# All other scripts
 FRESHMAC=$HOME/fresh-mac
 MACOS=$FRESHMAC/.dotbin/.macOS
 HOMEBREW=$FRESHMAC/.dotbin/.homebrew
@@ -15,7 +19,7 @@ BREWAPPS=$FRESHMAC/.dotbin/.brewapps
 OMZ=$FRESHMAC/.dotbin/.omz
 CLEANBREW=$FRESHMAC/.dotbin/.cleanbrew
 TODO=$FRESHMAC/.dotbin/.todo
-INSTALL=$FRESHMAC/install
+
 
 
 ###############################################################################
