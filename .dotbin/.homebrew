@@ -30,13 +30,13 @@ cecho() {
 if which brew 2> /dev/null; then
     brewLocation=`which brew`
     appLocation=`brew --prefix`
-    cecho $cyan"
-    Homebrew is installed in $brewLocation"
-    cecho $cyan"
+    cecho "
+    Homebrew is installed in $brewLocation" $white
+    cecho "
     Homebrew apps are run from $appLocation
-    "
+    " $white
 else
-  cecho $yellow"
-Installing Homebrew..."
+  cecho "
+Installing Homebrew..." $yellow
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi

@@ -27,16 +27,27 @@ cecho() {
 
 
 ###############################################################################
-# INSTALL OH-MY-ZSH                                                           #
+# ASSIGN SOME VARIABLES                                                       #
 ###############################################################################
 
-cecho "
-Installing oh-my-zsh...
-" $yellow
-sleep 2
+FRESHMAC=$HOME/fresh-mac
+ALIASES=$FRESHMAC/.dotbin/.aliases
 
-# Install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+###############################################################################
+# INSTALL OH-MY-ZSH IF IT ISN'T ALREADY INSTALLED                             #
+###############################################################################
+
+OMZ=$HOME/.oh-my-zsh/oh-my-zsh.sh
+if test -f "$OMZ"; then
+echo "Oh-My-Zsh is already installed."
+else
+  cecho "
+  Installing oh-my-zsh...
+  " $yellow
+  sleep 2
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
 
 
 ###############################################################################
@@ -49,7 +60,7 @@ if ! grep -Fxq "robbyrussell" ~/.zshrc; then
 fi
 
 ###############################################################################
-# ADD SOME STUFF TO RC FILE                                                   #
+# ADD SOME STUFF TO .ZSHRC FILE                                               #
 ###############################################################################
 
 # Add 'neofetch'to .zshrc
@@ -71,11 +82,11 @@ export PATH="/usr/local/sbin:$PATH"' >> ~/.zshrc
 fi
 
 ###############################################################################
-# MOVE ALIASES DOTFILE AND SOURCE IT & ZSHRC                                  #
+# MOVE ALIASES DOTFILE THEN SOURCE IT & ZSHRC                                 #
 ###############################################################################
 
 # Copy these files to ~/
-cp -f .aliases $HOME
+cp -f $ALIASES $HOME
 
 # Source these files
 source $HOME/.aliases

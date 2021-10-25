@@ -5,21 +5,22 @@
 # And to many others who also credit him
 
 ###############################################################################
-# ASSIGN FILES TO VARIABLES                                                   #
+# ASSIGN SOME VARIABLES                                                       #
 ###############################################################################
+
+# This dir
+FRESHMAC=$HOME/fresh-mac
 
 # This script
 INSTALL=$FRESHMAC/install
 
 # All other scripts
-FRESHMAC=$HOME/fresh-mac
 MACOS=$FRESHMAC/.dotbin/.macOS
 HOMEBREW=$FRESHMAC/.dotbin/.homebrew
 BREWAPPS=$FRESHMAC/.dotbin/.brewapps
 OMZ=$FRESHMAC/.dotbin/.omz
 CLEANBREW=$FRESHMAC/.dotbin/.cleanbrew
 TODO=$FRESHMAC/.dotbin/.todo
-
 
 
 ###############################################################################
