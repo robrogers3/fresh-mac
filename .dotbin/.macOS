@@ -9,8 +9,6 @@ red='\033[0;31m'
 green='\033[0;32m'
 yellow='\033[0;33m'
 blue='\033[0;34m'
-magenta='\033[0;35m'
-cyan='\033[0;36m'
 
 # Resets the style
 reset=`tput sgr0`
@@ -33,7 +31,7 @@ osascript -e 'tell application "System Preferences" to quit'
 clear && printf '\e[3J'
 
 echo ""
-cecho "Let's tweak some OS settings..." $white
+cecho " Let's tweak some OS settings..." $white
 
 # Ask for the administrator password upfront and run a keep-alive
 # to update existing `sudo` time stamp until script has finished
@@ -61,6 +59,10 @@ defaults write com.apple.ActivityMonitor SortDirection -int 0
 # /////////////////////////////////////////////////////////////////////////////
 # Dock                                      																 	/
 # /////////////////////////////////////////////////////////////////////////////
+
+# Clear the Dock icons
+# Uncomment for a fresh install to remove all the default icons
+# defaults write com.apple.dock persistent-apps -array
 
 # Position Dock on left side
 defaults write com.apple.dock orientation left
@@ -91,16 +93,6 @@ defaults write com.apple.dock launchanim -bool false
 
 # Don’t show recent applications in Dock
 defaults write com.apple.dock show-recents -bool false
-
-#echo ""
-#while true; do
-#    read -p "The next step will remove all Dock icons not currently open. Do you want to do that? " yn
-#    case $yn in
-#        [Yy]* ) defaults write com.apple.dock persistent-apps -array; break;;
-#        [Nn]* ) exit;;
-#        * ) echo "Please answer yes or no.";;
-#    esac
-#done
 
 # /////////////////////////////////////////////////////////////////////////////
 # Dashboard                                      														 	/
@@ -364,11 +356,11 @@ clear && printf '\e[3J'
 # Say we're finished and that we're restarting things
 sleep .2
 echo ""
-cecho "Finished with OS-specific tweaks!" $white
+cecho " Finished with OS-specific tweaks!" $white
 echo ""
 sleep 2
 echo ""
-cecho "Restarting affected applications to enable changes." $white
+cecho " Restarting affected applications to enable changes." $white
 sleep 2
 
 # Then actually restart things
@@ -387,10 +379,10 @@ clear && printf '\e[3J'
 sleep 1
 echo "
 "
-cecho "Some of the changes require you to logout or reboot." $white
+cecho " Some of the changes require you to logout or reboot." $white
 echo ""
 sleep 2
-cecho "Please don't forget to do that later." $white
+cecho " Please don't forget to do that later." $white
 echo "
 
 
@@ -398,7 +390,7 @@ echo "
 
 "
 sleep 2
-cecho "Returning to main menu" $blue
+cecho " Returning to main menu" $blue
 sleep 2
 
 # Clear the screen AGAIN

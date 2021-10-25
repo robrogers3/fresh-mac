@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh -f
+
+
+echo ""
+while true; do
+    read -p "The next step will remove all Dock icons not currently open. Do you want to do that? " yn
+    case $yn in
+        [Yy]* ) defaults write com.apple.dock persistent-apps -array; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
