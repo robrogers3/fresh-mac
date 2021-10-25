@@ -18,8 +18,8 @@ INSTALL=$FRESHMAC/install
 MACOS=$FRESHMAC/.dotbin/.macOS
 HOMEBREW=$FRESHMAC/.dotbin/.homebrew
 BREWAPPS=$FRESHMAC/.dotbin/.brewapps
-OMZ=$FRESHMAC/.dotbin/.omz
 CLEANBREW=$FRESHMAC/.dotbin/.cleanbrew
+OMZ=$FRESHMAC/.dotbin/.omz
 TODO=$FRESHMAC/.dotbin/.todo
 
 
@@ -53,8 +53,8 @@ do
     #        (1) Change Mac default preferences                            #
     #        (2) Install Homebrew                                          #
     #        (3) Install apps with Homebrew                                #
-    #        (4) Install Oh-My-Zsh                                         #
-    #        (5) Clean up Homebrew                                         #
+    #        (4) Clean up Homebrew                                         #
+    #        (5) Install Oh-My-Zsh                                         #
     #        (6) Read the post-run TODO list                               #
     #                                                                      #
     #        (0) Exit                                                      #
@@ -66,8 +66,8 @@ EOF
     "1")  echo "Customizing your Mac!"                | . $MACOS           ;;
     "2")  echo "Installing Homebrew!"                 | . $HOMEBREW        ;;
     "3")  echo "Installing a bunch of apps!"          | . $BREWAPPS        ;;
-    "4")  echo "Installing Oh My Zsh!"                | . $OMZ             ;;
-    "5")  echo "Updating & cleaning up Homebrew!"     | . $CLEANBREW       ;;
+    "4")  echo "Updating & cleaning up Homebrew!"     | . $CLEANBREW       ;;
+    "5")  echo "Installing Oh My Zsh!"                | . $OMZ             ;;
     "6")  echo "Stuff TO DO!"                         | . $TODO            ;;
     "0")  exit                                                             ;;
      * )  echo "Invalid option!"                                           ;;
