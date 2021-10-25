@@ -4,7 +4,6 @@
 # /////////////////////////////////////////////////////////////////////////////
 
 # Set colors
-black='\033[0;30m'
 white='\033[0;37m'
 red='\033[0;31m'
 green='\033[0;32m'
@@ -34,8 +33,7 @@ osascript -e 'tell application "System Preferences" to quit'
 clear && printf '\e[3J'
 
 echo ""
-cecho " Let's tweak some Mac settings... " $magenta
-echo ""
+cecho "Let's tweak some OS settings..." $white
 
 # Ask for the administrator password upfront and run a keep-alive
 # to update existing `sudo` time stamp until script has finished
@@ -94,14 +92,15 @@ defaults write com.apple.dock launchanim -bool false
 # Don’t show recent applications in Dock
 defaults write com.apple.dock show-recents -bool false
 
-while true; do
-    read -p "The next step will `tput smul``tput bold`remove all Dock icons not currently open.`tput rmul``tput sgr0` Do you want to do that? " yn
-    case $yn in
-        [Yy]* ) defaults write com.apple.dock persistent-apps -array; break;;
-        [Nn]* ) exit;;
-        * ) echo "Please answer yes or no.";;
-    esac
-done
+#echo ""
+#while true; do
+#    read -p "The next step will remove all Dock icons not currently open. Do you want to do that? " yn
+#    case $yn in
+#        [Yy]* ) defaults write com.apple.dock persistent-apps -array; break;;
+#        [Nn]* ) exit;;
+#        * ) echo "Please answer yes or no.";;
+#    esac
+#done
 
 # /////////////////////////////////////////////////////////////////////////////
 # Dashboard                                      														 	/
@@ -300,53 +299,6 @@ defaults write com.apple.terminal StringEncodings -array 4
 # Use Plain Text Mode as Default for TextEdit
 defaults write com.apple.TextEdit RichText -int 0
 
-# Use a modified version of the Solarized Dark theme by default in Terminal.app
-osascript <<EOD
-
-tell application "Terminal"
-
-	local allOpenedWindows
-	local initialOpenedWindows
-	local windowID
-	set themeName to "Solarized Dark xterm-256color"
-
-	(* Store the IDs of all the open terminal windows. *)
-	set initialOpenedWindows to id of every window
-
-	(* Open the custom theme so that it gets added to the list
-	   of available terminal themes (note: this will open two
-	   additional terminal windows). *)
-	do shell script "open '$HOME/init/" & themeName & ".terminal'"
-
-	(* Wait a little bit to ensure that the custom theme is added. *)
-	delay 1
-
-	(* Set the custom theme as the default terminal theme. *)
-	set default settings to settings set themeName
-
-	(* Get the IDs of all the currently opened terminal windows. *)
-	set allOpenedWindows to id of every window
-
-	repeat with windowID in allOpenedWindows
-
-		(* Close the additional windows that were opened in order
-		   to add the custom theme to the list of terminal themes. *)
-		if initialOpenedWindows does not contain windowID then
-			close (every window whose id is windowID)
-
-		(* Change the theme for the initial opened terminal windows
-		   to remove the need to close them in order for the custom
-		   theme to be applied. *)
-		else
-			set current settings of tabs of (every window whose id is windowID) to settings set themeName
-		end if
-
-	end repeat
-
-end tell
-
-EOD
-
 # Enable “focus follows mouse” for Terminal.app and all X11 apps
 # i.e. hover over a window and start typing in it without clicking first
 #defaults write com.apple.terminal FocusFollowsMouse -bool true
@@ -358,9 +310,6 @@ defaults write com.apple.terminal SecureKeyboardEntry -bool true
 
 # Disable the annoying line marks
 defaults write com.apple.Terminal ShowLineMarks -int 0
-
-# Install the Solarized Dark theme for iTerm
-open "${HOME}/init/Solarized Dark.itermcolors"
 
 # Don’t display the annoying prompt when quitting iTerm
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
@@ -376,23 +325,72 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 # Kill affected applications                                                  /
 # /////////////////////////////////////////////////////////////////////////////
 
+# Make the script take a little extra time and display "progress dots"
+# because this script runs way to fast which isn't satisfying and these
+# LOOK COOL
+echo ""
+cecho "  •" $magenta
+sleep 1
+cecho "  •" $magenta
+sleep .5
+cecho "  •" $magenta
+sleep 0.3
+cecho "  •" $yellow
+sleep 0.2
+cecho "  •" $yellow
+sleep 0.2
+cecho "  •" $yellow
+sleep 0.2
+cecho "  •" $yellow
+sleep 0.1
+cecho "  •" $green
+sleep 0.1
+cecho "  •" $green
+sleep 0.1
+cecho "  •" $green
+sleep 0.1
+cecho "  •" $green
+sleep 0.1
+cecho "  •" $green
+sleep 0.1
+cecho "  •" $green
+sleep 0.1
+cecho "  •" $green
+sleep 1
+
+# Clear the screen
+clear && printf '\e[3J'
+
+# Say we're finished and that we're restarting things
+sleep .2
 echo ""
 cecho "Finished with OS-specific tweaks!" $white
+echo ""
 sleep 2
 echo ""
-echo ""
-cecho "###############################################################################" $white
-echo ""
-echo ""
-cecho "Some of these changes require a logout/restart to take effect." $white
-sleep 2
-echo ""
-cecho "Killing affected applications to enable changes." $white
-echo ""
+cecho "Restarting affected applications to enable changes." $white
 sleep 2
 
+# Then actually restart things
 for app in "Activity Monitor" "cfprefsd" \
   "Dock" "Finder" "SystemUIServer" \
   "Terminal"; do
   killall "${app}" > /dev/null 2>&1
 done
+
+# Clear the screen
+clear && printf '\e[3J'
+
+# Display a friendly reminder to logout or reboot soon
+sleep .2
+echo ""
+echo ""
+cecho "Some of the changes require you to logout or reboot." $white
+echo ""
+sleep 2
+cecho "Please don't forget to do that later." $white
+echo ""
+echo ""
+sleep 2
+cecho "Returning to main menu" $blue
+sleep 1
