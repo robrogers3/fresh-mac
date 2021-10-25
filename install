@@ -71,8 +71,8 @@ do
     #        (3) Install apps with Homebrew                                #
     #        (4) Clean up Homebrew                                         #
     #        (5) Install Oh-My-Zsh                                         #
-    #        (6) Show available software updates                           #
-    #        (7) Download available software updates                       #
+    #        (6) Show available macOS software updates                     #
+    #        (7) Download available macOS software updates                 #
     #                                                                      #
     #        (8) Read the post-run TODO list                               #
     #                                                                      #
