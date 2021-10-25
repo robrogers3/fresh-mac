@@ -22,7 +22,10 @@ CLEANBREW=$FRESHMAC/.dotbin/.cleanbrew
 OMZ=$FRESHMAC/.dotbin/.omz
 TODO=$FRESHMAC/.dotbin/.todo
 
-# Some functions
+###############################################################################
+# DEFINE SOME SIMPLE FUNCTIONS                                                #
+###############################################################################
+
 updates_list() {
   echo "
   "
@@ -35,6 +38,13 @@ updater() {
   "
   sudo softwareupdate -ia
   return
+}
+
+nukethedock() {
+    echo "
+    "
+    defaults write com.apple.dock persistent-apps -array
+    return
 }
 
 ###############################################################################
@@ -67,14 +77,15 @@ do
     #        Enter your choice:                                            #
     #                                                                      #
     #        (1) Change Mac default preferences                            #
-    #        (2) Install Homebrew                                          #
-    #        (3) Install apps with Homebrew                                #
-    #        (4) Clean up Homebrew                                         #
-    #        (5) Install Oh-My-Zsh                                         #
-    #        (6) Show available macOS software updates                     #
-    #        (7) Download available macOS software updates                 #
+    #        (2) NUKE THE DOCK! (remove all the icons)                     #
+    #        (3) Install Homebrew                                          #
+    #        (4) Install apps with Homebrew                                #
+    #        (5) Clean up Homebrew                                         #
+    #        (6) Install Oh-My-Zsh                                         #
+    #        (7) Show available macOS software updates                     #
+    #        (8) Download available macOS software updates                 #
     #                                                                      #
-    #        (8) Read the post-run TODO list                               #
+    #        (9) Read the post-run TODO list                               #
     #                                                                      #
     #        (0) Exit                                                      #
     #                                                                      #
@@ -83,13 +94,14 @@ EOF
     read -n1 -s
     case "$REPLY" in
     "1")  echo "Customizing your Mac!"                | . $MACOS           ;;
-    "2")  echo "Installing Homebrew!"                 | . $HOMEBREW        ;;
-    "3")  echo "Installing a bunch of apps!"          | . $BREWAPPS        ;;
-    "4")  echo "Updating & cleaning up Homebrew!"     | . $CLEANBREW       ;;
-    "5")  echo "Installing Oh My Zsh!"                | . $OMZ             ;;
-    "6")  echo "Checking for updates!"                | updates_list       ;;
-    "7")  echo "Downloading updates!"                 | updater            ;;
-    "8")  echo "Stuff TO DO!"                         | . $TODO            ;;
+    "2")  echo "Nuking the Dock! (You've been warned)"| nukethedock        ;;
+    "3")  echo "Installing Homebrew!"                 | . $HOMEBREW        ;;
+    "4")  echo "Installing a bunch of apps!"          | . $BREWAPPS        ;;
+    "5")  echo "Updating & cleaning up Homebrew!"     | . $CLEANBREW       ;;
+    "6")  echo "Installing Oh My Zsh!"                | . $OMZ             ;;
+    "7")  echo "Checking for updates!"                | updates_list       ;;
+    "8")  echo "Downloading updates!"                 | updater            ;;
+    "9")  echo "Stuff TO DO!"                         | . $TODO            ;;
     "0")  exit                                                             ;;
      * )  echo "Invalid option!"                                           ;;
     esac
