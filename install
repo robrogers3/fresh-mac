@@ -10,10 +10,8 @@
 
 # This dir
 FRESHMAC=$HOME/fresh-mac
-
 # This script
 INSTALL=$FRESHMAC/install
-
 # All other scripts
 MACOS=$FRESHMAC/.dotbin/.macOS
 HOMEBREW=$FRESHMAC/.dotbin/.homebrew
