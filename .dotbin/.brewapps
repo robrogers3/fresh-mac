@@ -38,17 +38,16 @@ clear && printf '\e[3J'
 sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+echo ""
 cecho "
-Now we'll install a shitload of apps with Homebrew.
+  Now we'll install a shitload of apps with Homebrew.
 " $white
 sleep 2
 
-echo "
-\033[1;93m
-Go make that\033[0m \033[5;101mcoffee\033[0m \033[1;93myou've been thinking about.
-\033[0m
+cecho "
+  Maybe you should go make that coffee you've been thinking about!
 
-"
+" $white
 sleep 3
 
 # Install a bunch of GNU utilities
