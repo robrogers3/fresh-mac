@@ -44,8 +44,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 ###############################################################################
 
 # Change oh-my-zsh theme to bira
-if ! grep -Fxq "robbyrussell" $HOME/.zshrc; then
-  sed -i "" "s|robbyrussell|bira|" $HOME/.zshrc
+if ! grep -Fxq "robbyrussell" ~/.zshrc; then
+  sed -i "" "s|robbyrussell|bira|" ~/.zshrc
 fi
 
 ###############################################################################
