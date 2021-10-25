@@ -1,7 +1,6 @@
 #!/usr/bin/env zsh -f
 
 
-
 # Set my preferred working audio level
 alias vol="osascript -e 'set volume output volume 75'"
 alias work="osascript -e 'set volume output volume 75'"
