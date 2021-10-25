@@ -93,6 +93,8 @@ defaults write com.apple.dock launchanim -bool false
 # Don’t show recent applications in Dock
 defaults write com.apple.dock show-recents -bool false
 
+# Remove Dock icons
+# TODO Figure out how to make this work
 #echo ""
 #while true; do
 #    read -p "The next step will remove all Dock icons not currently open. Do you want to do that? " yn
@@ -102,6 +104,11 @@ defaults write com.apple.dock show-recents -bool false
 #        * ) echo "Please answer yes or no.";;
 #    esac
 #done
+
+# Remove Dock icons, the manual method
+# Uncomment this to remove all the Dock icons, typically after a fresh install
+# defaults write com.apple.dock persistent-apps -array
+
 
 ###############################################################################
 # FINDER                                                                      #
