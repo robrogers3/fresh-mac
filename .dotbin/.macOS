@@ -1,9 +1,11 @@
 #!/usr/bin/env zsh -f
 
 
-# /////////////////////////////////////////////////////////////////////////////
+###############################################################################
+# COLORS                                                                      #
+###############################################################################
 
-# Set colors
+black='\033[0;30m'
 white='\033[0;37m'
 red='\033[0;31m'
 green='\033[0;32m'
@@ -23,7 +25,6 @@ cecho() {
   return
 }
 
-# /////////////////////////////////////////////////////////////////////////////
 
 # Close any open System Preferences panes, to prevent
 # them from overriding settings we’re about to change
@@ -41,9 +42,9 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 
-# /////////////////////////////////////////////////////////////////////////////
-# Activity Monitor                                                            /
-# /////////////////////////////////////////////////////////////////////////////
+###############################################################################
+# ACTIVITY MONITOR                                                            #
+###############################################################################
 
 # Show the main window when launching Activity Monitor
 defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
@@ -58,9 +59,9 @@ defaults write com.apple.ActivityMonitor ShowCategory -int 0
 defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
 defaults write com.apple.ActivityMonitor SortDirection -int 0
 
-# /////////////////////////////////////////////////////////////////////////////
-# Dock                                      																 	/
-# /////////////////////////////////////////////////////////////////////////////
+###############################################################################
+# DOCK                                                                        #
+###############################################################################
 
 # Position Dock on left side
 defaults write com.apple.dock orientation left
@@ -102,22 +103,9 @@ defaults write com.apple.dock show-recents -bool false
 #    esac
 #done
 
-# /////////////////////////////////////////////////////////////////////////////
-# Dashboard                                      														 	/
-# /////////////////////////////////////////////////////////////////////////////
-
-# Disable Dashboard
-defaults write com.apple.dashboard mcx-disabled -bool true
-
-# Don’t show Dashboard as a Space
-defaults write com.apple.dock dashboard-in-overlay -bool true
-
-# Reset Launchpad, but keep the desktop wallpaper intact
-find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete
-
-# /////////////////////////////////////////////////////////////////////////////
-# Finder                                                                      /
-# /////////////////////////////////////////////////////////////////////////////
+###############################################################################
+# FINDER                                                                      #
+###############################################################################
 
 # Enable quitting via ⌘ + Q
 defaults write com.apple.finder QuitMenuItem -bool true
@@ -166,9 +154,9 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 	OpenWith -bool true \
 	Privileges -bool true
 
-# /////////////////////////////////////////////////////////////////////////////
-# General UI/UX                                                               /
-# /////////////////////////////////////////////////////////////////////////////
+###############################################################################
+# GENERAL UI/UX                                                               #
+###############################################################################
 
 # Require password 5 seconds after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 1
@@ -267,9 +255,9 @@ defaults write com.apple.screencapture "include-date" -bool "false"
 # Display -> Automatically adjust brightness
 sudo defaults write /Library/Preferences/com.apple.iokit.AmbientLightSensor "Automatic Display Enabled" -bool false
 
-# /////////////////////////////////////////////////////////////////////////////
-# Mac App Store                                                               /
-# /////////////////////////////////////////////////////////////////////////////
+###############################################################################
+# APP STORE                                                                   #
+###############################################################################
 
 # Enable the automatic update check
 defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
@@ -289,9 +277,9 @@ defaults write com.apple.commerce AutoUpdate -bool true
 # Allow the App Store to reboot machine on macOS updates
 defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
 
-# /////////////////////////////////////////////////////////////////////////////
-# Terminal & iTerm 2                                                          /
-# /////////////////////////////////////////////////////////////////////////////
+###############################################################################
+# TERMINAL & ITERM 2                                                          #
+###############################################################################
 
 # Only use UTF-8 in Terminal.app
 defaults write com.apple.terminal StringEncodings -array 4
@@ -314,16 +302,16 @@ defaults write com.apple.Terminal ShowLineMarks -int 0
 # Don’t display the annoying prompt when quitting iTerm
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
-# /////////////////////////////////////////////////////////////////////////////
-# Time Machine                                                                /
-# /////////////////////////////////////////////////////////////////////////////
+###############################################################################
+# TIME MACHINE                                                                #
+###############################################################################
 
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
-# /////////////////////////////////////////////////////////////////////////////
-# Kill affected applications                                                  /
-# /////////////////////////////////////////////////////////////////////////////
+###############################################################################
+# RESTART AFFECTED PROCESSES                                                  #
+###############################################################################
 
 # Make the script take a little extra time and display "progress dots"
 # because this script runs way to fast which isn't satisfying and these
@@ -361,7 +349,7 @@ sleep 1
 # Clear the screen
 clear && printf '\e[3J'
 
-# Say we're finished and that we're restarting things
+# Say we're finished and that we're restarting processes
 sleep .2
 echo ""
 cecho "Finished with OS-specific tweaks!" $white
@@ -371,7 +359,7 @@ echo ""
 cecho "Restarting affected applications to enable changes." $white
 sleep 2
 
-# Then actually restart things
+# Then restart processes
 for app in "Activity Monitor" "cfprefsd" \
   "Dock" "Finder" "SystemUIServer" \
   "Terminal"; do
@@ -380,7 +368,7 @@ done
 
 sleep 4
 
-# Clear the screen
+# Clear the screen again
 clear && printf '\e[3J'
 
 # Display a friendly reminder to logout or reboot soon

@@ -1,9 +1,10 @@
 #!/usr/bin/env zsh -f
 
 
-# /////////////////////////////////////////////////////////////////////////////
+###############################################################################
+# COLORS                                                                      #
+###############################################################################
 
-# Set colors
 black='\033[0;30m'
 white='\033[0;37m'
 red='\033[0;31m'
@@ -24,7 +25,10 @@ cecho() {
   return
 }
 
-# /////////////////////////////////////////////////////////////////////////////
+
+###############################################################################
+# INSTALL A BUNCH OF APPS                                                     #
+###############################################################################
 
 # Clear the screen
 clear && printf '\e[3J'
@@ -34,12 +38,9 @@ clear && printf '\e[3J'
 sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-
-echo "
-\033[1;93m
-Now we'll install a shitload of apps with\033[0m \033[1;34mHomebrew.
-\033[0m
-"
+cecho "
+Now we'll install a shitload of apps with Homebrew.
+" $white
 sleep 2
 
 echo "
@@ -50,20 +51,17 @@ Go make that\033[0m \033[5;101mcoffee\033[0m \033[1;93myou've been thinking abou
 "
 sleep 3
 
-# Install GNU core utilities (those that come with macOS are outdated)
+# Install a bunch of GNU utilities
+# (those that come with macOS are outdated)
 brew install coreutils
-
-# Install some other useful utilities like `sponge`
 brew install moreutils
-
-# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
 brew install findutils
-
-# Install GNU `sed`, overwriting the built-in `sed`
 brew install gnu-sed
-
-# Install GnuPG to enable PGP-signing commits
 brew install gnupg
+brew install gnu-indent
+brew install gnu-tar
+brew install gnu-which
+brew install gnu-grep
 
 # Install more recent versions of some macOS tools
 brew install grep
@@ -71,6 +69,9 @@ brew install openssh
 brew install screen
 brew install php
 brew install gmp
+brew install ack
+brew install curl
+brew install wget
 
 # Tap the font cask
 brew tap homebrew/cask-fonts
@@ -82,34 +83,24 @@ brew install sfnt2woff-zopfli
 brew install woff2
 brew install font-hack
 
-echo "
-\033[1;34m
+cecho "
 Installing git utilities...
-\033[0m
-"
+" $yellow
 brew install git-extras
 brew install legit
 brew install git-flow
 brew install github
 
-# git config
-git config --global user.name "Coffe3"
-git config --global user.email 7morris@gmail.com
-
-echo "
-\033[1;34m
+cecho "
 Installing browsers...
-\033[0m
-"
+" $yellow
 brew install brave-browser
 brew install firefox
 brew install google-chrome
 
-echo "
-\033[1;34m
+cecho "
 Installing various utilities...
-\033[0m
-"
+" $yellow
 brew install mackup
 brew install apparency
 brew install appdelete
@@ -126,24 +117,9 @@ brew install superduper
 brew install suspicious-package
 brew install the-unarchiver
 
-echo "
-\033[1;34m
-Installing a few useful binaries...
-\033[0m
-"
-brew install ack
-brew install curl
-brew install gnu-indent
-brew install gnu-tar
-brew install gnu-which
-brew install gnu-grep
-brew install wget
-
-echo "
-\033[1;34m
-Installing miscellany...
-\033[0m
-"
+cecho "
+Installing miscellanious apps...
+" $yellow
 brew install adapter
 brew install atom
 brew install balenaetcher
@@ -160,9 +136,6 @@ brew install veracrypt
 brew install vlc
 brew install whatsapp
 brew install zoom
-
-# Add Homebrew's "sbin" to PATH
-# echo 'export PATH="/usr/local/sbin:$PATH"' >> ~/.bash_profile
 
 # Add coreutils to `$PATH`
 export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"

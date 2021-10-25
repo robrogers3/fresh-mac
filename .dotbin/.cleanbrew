@@ -1,9 +1,10 @@
 #!/usr/bin/env zsh -f
 
 
-# /////////////////////////////////////////////////////////////////////////////
+###############################################################################
+# COLORS                                                                      #
+###############################################################################
 
-# Set colors
 black='\033[0;30m'
 white='\033[0;37m'
 red='\033[0;31m'
@@ -24,32 +25,11 @@ cecho() {
   return
 }
 
-# /////////////////////////////////////////////////////////////////////////////
 
 # Clear the screen
 clear && printf '\e[3J'
 
-# Ask for the administrator password upfront and run a keep-alive
-# to update existing `sudo` time stamp until script has finished
-sudo -v
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null
-
-## Brew Diagnotic
-echo "${yellow}==>${reset} Running Brew Diagnotic..."
-brew -v doctor 2>&1
-brew -v missing 2>&1
-echo -e "${green}==>${reset} Brew Diagnotic Finished."
-
-## Brew packages update and cleanup
-echo "${yellow}==>${reset} Running Updates..."
-brew -v update 2>&1
-brew -v outdated 2>&1
-brew -v upgrade 2>&1
-brew -v cleanup -s 2>&1
-echo "${green}==>${reset} Finished Updates"
-
-# Cleanup
-# printf "⚙️  Clean up Homebrew...\n"
-# brew -v update && brew -v upgrade && brew -v cleanup --prune=2 && brew doctor && brew -v upgrade --greedy
-
-exit
+# Clean up Homebrew
+printf "⚙️  Cleaning up Homebrew...\n
+" $yellow
+brew -v update && brew -v upgrade && brew -v cleanup --prune=2 && brew doctor && brew -v upgrade --greedy

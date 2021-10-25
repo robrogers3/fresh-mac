@@ -4,7 +4,9 @@
 # Much credit to github.com/mathiasbynens/dotfiles
 # And to many others who also credit him
 
-# /////////////////////////////////////////////////////////////////////////////
+###############################################################################
+# ASSIGN FILES TO VARIABLES                                                   #
+###############################################################################
 
 FRESHMAC=$HOME/fresh-mac
 MACOS=$FRESHMAC/.dotbin/.macOS
@@ -15,7 +17,10 @@ CLEANBREW=$FRESHMAC/.dotbin/.cleanbrew
 TODO=$FRESHMAC/.dotbin/.todo
 INSTALL=$FRESHMAC/install
 
-# /////////////////////////////////////////////////////////////////////////////
+
+###############################################################################
+# LOAD THE MENU                                                               #
+###############################################################################
 
 # Clear the screen
 clear && printf '\e[3J'
@@ -24,8 +29,6 @@ clear && printf '\e[3J'
 # to update existing `sudo` time stamp until script has finished
 sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
-# /////////////////////////////////////////////////////////////////////////////
 
 while :
 do

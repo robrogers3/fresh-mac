@@ -1,20 +1,17 @@
 #!/usr/bin/env zsh -f
 
 
-# /////////////////////////////////////////////////////////////////////////////
 
-# Set my preferred working volume
+# Set my preferred working audio level
 alias vol="osascript -e 'set volume output volume 75'"
 alias work="osascript -e 'set volume output volume 75'"
 
-# Set my preferred headphones volume
+# Set my preferred headphones audio level
 alias headphones="osascript -e 'set volume output volume 35'"
 alias hp="osascript -e 'set volume output volume 35'"
 
-# Set my preferred sleeping volume
+# Set my preferred sleeping audio level
 alias sleep="osascript -e 'set volume output volume 20'"
-
-# /////////////////////////////////////////////////////////////////////////////
 
 # Navigation shortcuts
 alias dl="cd ~/Downloads"
@@ -32,7 +29,7 @@ alias path='echo -e ${PATH//:/\\n}'
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
 
 # Recursively delete `.DS_Store` files
-alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+alias dsnuke="find . -type f -name '*.DS_Store' -ls -delete"
 
 # Clean up LaunchServices to remove duplicates in the “Open With” menu
 alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
@@ -40,16 +37,8 @@ alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/La
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 
-# Show active network interfaces
-alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
-
-# IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ipconfig getifaddr en0"
-alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
-
 # Clean up Homebrew
-alias brewclean="brew -v update && brew -v upgrade && brew -v cleanup --prune=2 && brew doctor && brew -v upgrade --greedy"
+alias cleanbrew="brew -v update && brew -v upgrade && brew -v cleanup --prune=2 && brew doctor && brew -v upgrade --greedy"
 
 # Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'
@@ -82,8 +71,8 @@ fi
 # List all files colorized in long format
 alias l="ls -lF ${colorflag}"
 
-# List all files colorized in long format, excluding . and ..
-alias la="ls -lAF ${colorflag}"
+# List all files colorized in human readable form
+alias la="ls -agh ${colorflag}"
 
 # List only directories
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"

@@ -1,9 +1,10 @@
 #!/usr/bin/env zsh -f
 
 
-# /////////////////////////////////////////////////////////////////////////////
+###############################################################################
+# COLORS                                                                      #
+###############################################################################
 
-# Set colors
 black='\033[0;30m'
 white='\033[0;37m'
 red='\033[0;31m'
@@ -24,14 +25,17 @@ cecho() {
   return
 }
 
-# /////////////////////////////////////////////////////////////////////////////
+
+###############################################################################
+# FRIENDLY REMINDER OF THINGS TO DO                                           #
+###############################################################################
 
 # Clear the screen
 clear && printf '\e[3J'
 
 echo ""
-cecho " Remember, you have a TODO list now:" $green
-sleep 2
+cecho "   Remember, you have a TODO list now:" $white
+sleep 3
 
 echo ""
 cecho "   ###################################################" $blue
@@ -44,5 +48,5 @@ cecho "   $blue#  $white • Logout or restart                          $blue #"
 cecho "   #                                                 #" $blue
 cecho "   ###################################################" $blue
 echo ""
-
-read -p "Press enter to continue"
+sleep 4
+read -p "   Press enter to continue"

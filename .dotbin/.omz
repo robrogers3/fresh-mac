@@ -1,44 +1,82 @@
 #!/usr/bin/env zsh -f
 
 
-# /////////////////////////////////////////////////////////////////////////////
+###############################################################################
+# COLORS                                                                      #
+###############################################################################
 
-echo "
-\033[1;34m
-Installing\033[0m \033[1;32moh-my-zsh...
-\033[0m
-"
+black='\033[0;30m'
+white='\033[0;37m'
+red='\033[0;31m'
+green='\033[0;32m'
+yellow='\033[0;33m'
+blue='\033[0;34m'
+magenta='\033[0;35m'
+cyan='\033[0;36m'
+
+# Resets the style
+reset=`tput sgr0`
+
+# Color-echo. Improved. [Thanks @joaocunha]
+# arg $1 = message
+# arg $2 = Color
+cecho() {
+  echo "${2}${1}${reset}"
+  return
+}
+
+
+###############################################################################
+# INSTALL OH-MY-ZSH                                                           #
+###############################################################################
+
+cecho "
+Installing oh-my-zsh...
+" $yellow
 sleep 2
 
 # Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
-# Do these things:
-# 1) Change oh-my-zsh default theme to bira
-# 2) Add neofetch to .zshrc
-# 3) Add line to reload .aliases file to .zshrc
 
-#1 ////////////////////////////////////////////////
+###############################################################################
+# CHANGE OMZ DEFAULT THEME                                                    #
+###############################################################################
+
+# Change oh-my-zsh theme to bira
 if ! grep -Fxq "robbyrussell" $HOME/.zshrc; then
   sed -i "" "s|robbyrussell|bira|" $HOME/.zshrc
 fi
 
-#2 ////////////////////////////////////////////////
-if ! grep -Fxq "neofetch" $HOME/.zshrc; then
-  echo "neofetch" >> $HOME/.zshrc
+###############################################################################
+# ADD SOME STUFF TO RC FILE                                                   #
+###############################################################################
+
+# Add 'neofetch'to .zshrc
+if ! grep -Fxq "neofetch" ~/.zshrc; then
+  echo "
+neofetch" >> ~/.zshrc
 fi
 
-#3 ////////////////////////////////////////////////
-if ! grep -Fxq "source ~/.aliases" $HOME/.zshrc; then
-  echo "source ~/.aliases" >> $HOME/.zshrc
+# Add .aliases to .zshrc
+if ! grep -Fxq "source ~/.aliases" ~/.zshrc; then
+  echo "
+source ~/.aliases" >> ~/.zshrc
 fi
 
-# /////////////////////////////////////////////////////////////////////////////
+# Add Homebrew's "sbin" to PATH
+if ! grep -Fxq 'export PATH="/usr/local/sbin:$PATH"' ~/.zshrc; then
+  echo '
+export PATH="/usr/local/sbin:$PATH"' >> ~/.zshrc
+fi
 
-# Copy .aliases to Home folder
+###############################################################################
+# MOVE ALIASES DOTFILE AND SOURCE IT & ZSHRC                                  #
+###############################################################################
+
+# Copy these files to ~/
 cp -f .aliases $HOME
 
-# Reload these files
+# Source these files
 source $HOME/.aliases
 source $HOME/.zshrc
-sleep 2
