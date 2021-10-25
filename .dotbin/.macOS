@@ -329,11 +329,11 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 # because this script runs way to fast which isn't satisfying and these
 # LOOK COOL
 echo ""
-cecho "  •" $magenta
+cecho "  •" $red
 sleep 1
-cecho "  •" $magenta
+cecho "  •" $red
 sleep .5
-cecho "  •" $magenta
+cecho "  •" $red
 sleep 0.3
 cecho "  •" $yellow
 sleep 0.2
@@ -378,19 +378,28 @@ for app in "Activity Monitor" "cfprefsd" \
   killall "${app}" > /dev/null 2>&1
 done
 
+sleep 4
+
 # Clear the screen
 clear && printf '\e[3J'
 
 # Display a friendly reminder to logout or reboot soon
-sleep .2
-echo ""
-echo ""
+sleep 1
+echo "
+"
 cecho "Some of the changes require you to logout or reboot." $white
 echo ""
 sleep 2
 cecho "Please don't forget to do that later." $white
-echo ""
-echo ""
+echo "
+
+
+
+
+"
 sleep 2
 cecho "Returning to main menu" $blue
-sleep 1
+sleep 2
+
+# Clear the screen AGAIN
+clear && printf '\e[3J'
