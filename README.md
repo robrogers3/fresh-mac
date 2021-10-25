@@ -2,7 +2,7 @@
 
 I created this to set up a new Mac or fresh macOS install.
 
-Create a directory call `fresh-mac`, clone the repo, then run `install`.
+Create a directory named `fresh-mac`, clone the repo, then run `install`.
 
 ![Screenshot of the install menu](https://i.imgur.com/T8UDqE3.png)
 
