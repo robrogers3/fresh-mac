@@ -374,6 +374,9 @@ sleep 4
 # Clear the screen again
 clear && printf '\e[3J'
 
+# Check for available macOS Software Updates
+sudo softwareupdate --list
+
 # Display a friendly reminder to logout or reboot soon
 sleep 1
 echo "
