@@ -23,15 +23,9 @@ OMZ=$FRESHMAC/.dotbin/.omz
 TODO=$FRESHMAC/.dotbin/.todo
 
 ###############################################################################
-# DEFINE SOME SIMPLE FUNCTIONS                                                #
+# DEFINE A SIMPLE FUNCTION                                                    #
 ###############################################################################
 
-updater() {
-  echo "
-  "
-  sudo softwareupdate -ia
-  return
-}
 
 nukethedock() {
     echo "
@@ -75,9 +69,8 @@ do
     #        (4) Install apps with Homebrew                                #
     #        (5) Clean up Homebrew                                         #
     #        (6) Install Oh-My-Zsh                                         #
-    #        (7) Download available macOS software updates                 #
     #                                                                      #
-    #        (8) Read the post-run TODO list                               #
+    #        (7) Read the post-run TODO list                               #
     #                                                                      #
     #        (0) Exit                                                      #
     #                                                                      #
@@ -91,8 +84,7 @@ EOF
     "4")  echo "Installing a bunch of apps!"          | . $BREWAPPS        ;;
     "5")  echo "Updating & cleaning up Homebrew!"     | . $CLEANBREW       ;;
     "6")  echo "Installing Oh My Zsh!"                | . $OMZ             ;;
-    "7")  echo "Downloading updates!"                 | updater            ;;
-    "8")  echo "Stuff TO DO!"                         | . $TODO            ;;
+    "7")  echo "Stuff TO DO!"                         | . $TODO            ;;
     "0")  exit                                                             ;;
      * )  echo "Invalid option!"                                           ;;
     esac
