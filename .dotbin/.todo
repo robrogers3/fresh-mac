@@ -35,23 +35,23 @@ cecho "
 
    Remember..." $white
 sleep 2
-cecho "
-
-   You have a TODO list." $white
-sleep 2
 
 echo "
 
 "
-cecho "   ###################################################" $blue
-cecho "   #                                                 #" $blue
-cecho "   $blue#  $white • Restore Preferences from your backup       $blue #"
-cecho "   $blue#                                                $blue #"
-cecho "   $blue#  $white • Install Dropbox then run'mackup restore'   $blue #"
-cecho "   #                                                 #" $blue
-cecho "   $blue#  $white • Logout or restart                          $blue #"
-cecho "   #                                                 #" $blue
-cecho "   ###################################################" $blue
+cecho "   #####################################################" $blue
+cecho "   #                                                   #" $blue
+cecho "   $blue#  $white   • Restore Preferences from your backup       $blue #"
+cecho "   #                                                   #" $blue
+cecho "   $blue#      (You did back them up, right?) $blue              #"
+cecho "   $blue#                                                  $blue #"
+cecho "   $blue#  $white   • Install Dropbox then run 'mackup restore'  $blue #"
+cecho "   #                                                   #" $blue
+cecho "   $blue#      (You did use mackup, right?) $blue                #"
+cecho "   #                                                   #" $blue
+cecho "   $blue#  $white   • Logout or restart                          $blue #"
+cecho "   #                                                   #" $blue
+cecho "   #####################################################" $blue
 echo ""
-sleep 4
+sleep 5
 read -p "   Press enter to continue"
