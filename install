@@ -16,23 +16,12 @@ INSTALL=$FRESHMAC/install
 
 # All other scripts
 MACOS=$FRESHMAC/.dotbin/.macOS
+NUKETHEDOCK=$FRESHMAC/.dotbin/.nukethedock
 HOMEBREW=$FRESHMAC/.dotbin/.homebrew
 BREWAPPS=$FRESHMAC/.dotbin/.brewapps
 CLEANBREW=$FRESHMAC/.dotbin/.cleanbrew
 OMZ=$FRESHMAC/.dotbin/.omz
 TODO=$FRESHMAC/.dotbin/.todo
-
-###############################################################################
-# DEFINE A SIMPLE FUNCTION                                                    #
-###############################################################################
-
-
-nukethedock() {
-    echo "
-    "
-    defaults write com.apple.dock persistent-apps -array
-    return
-}
 
 ###############################################################################
 # LOAD THE MENU                                                               #
@@ -79,7 +68,7 @@ EOF
     read -n1 -s
     case "$REPLY" in
     "1")  echo "Customizing your Mac!"                | . $MACOS           ;;
-    "2")  echo "Nuking the Dock! (You've been warned)"| nukethedock        ;;
+    "2")  echo "Nuking the Dock! (You've been warned)"| . $NUKETHEDOCK     ;;
     "3")  echo "Installing Homebrew!"                 | . $HOMEBREW        ;;
     "4")  echo "Installing a bunch of apps!"          | . $BREWAPPS        ;;
     "5")  echo "Updating & cleaning up Homebrew!"     | . $CLEANBREW       ;;

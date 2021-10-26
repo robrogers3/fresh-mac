@@ -1,0 +1,73 @@
+#!/usr/bin/env zsh -f
+
+
+###############################################################################
+# COLORS                                                                      #
+###############################################################################
+
+white='\033[0;37m'
+red='\033[0;31m'
+green='\033[0;32m'
+yellow='\033[0;33m'
+blue='\033[0;34m'
+
+# Resets the style
+reset=`tput sgr0`
+
+# Color-echo. Improved. [Thanks @joaocunha]
+# arg $1 = message
+# arg $2 = Color
+cecho() {
+  echo "${2}${1}${reset}"
+  return
+}
+
+
+echo "
+"
+cecho "Dropping a nuke on the Dock!" $red
+echo "
+"
+cecho "  •" $green
+sleep 1
+cecho "  •" $green
+sleep .5
+cecho "  •" $green
+sleep 0.3
+cecho "  •" $green
+sleep 0.2
+cecho "  •" $yellow
+sleep 0.2
+cecho "  •" $yellow
+sleep 0.2
+cecho "  •" $yellow
+sleep 0.1
+cecho "  •" $yellow
+sleep 0.1
+cecho "  •" $yellow
+sleep 0.1
+cecho "  •" $red
+sleep 0.1
+cecho "  •" $red
+sleep 0.1
+cecho "  •" $red
+sleep 0.1
+cecho "  •" $red
+sleep 0.1
+cecho "  •" $red
+sleep 1
+
+defaults write com.apple.dock persistent-apps -array
+killAll Dock
+
+echo "
+
+
+
+"
+sleep 2
+cecho "Returning to main menu" $blue
+sleep 2
+
+# Clear the screen AGAIN
+clear && printf '\e[3J'
